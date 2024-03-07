@@ -1,5 +1,16 @@
 {
     "cSpell.words": [
+        "AUTOINCREMENT",
         "Krishnan"
-    ]
+    ],
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "archive",
+            "group": "archive",
+            "database": "${workspaceFolder:archive}/archive.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
 }
