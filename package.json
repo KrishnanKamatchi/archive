@@ -1,0 +1,34 @@
+{
+  "name": "archive",
+  "version": "1.0.0",
+  "description": "An archive for books",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "serve": "nodemon index",
+    "test": "want to write unittest with jest in future"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrishnanKamatchi/archive.git"
+  },
+  "author": "Krishnan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KrishnanKamatchi/archive/issues"
+  },
+  "homepage": "https://github.com/KrishnanKamatchi/archive#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "helmet": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "engineStrict": true
+}
