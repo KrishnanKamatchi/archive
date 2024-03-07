@@ -1,0 +1,13 @@
+TODO: 
+1. Create a public Web Api to retrieve data.
+2. Create a db to store data from the api.(maybe sqlite i guess)
+3. Create a express server to serve data from db.
+4. Create a static SPA to serve client from ReactJs/Tailwind/(Maybe Redux if necessery)
+5. Modules i have to holds
+    -Login module(With Facebook or Google)
+    -Users module(Search other users for their collections)
+    -Favorite module(Own collections)
+    -Add to archive module(To add an book or something manually)
+
+
+API KEY Google books: AIzaSyB3XGEMIcMwwlY6nhAtskPLdA35pbIFXCc
