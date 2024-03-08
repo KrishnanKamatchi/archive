@@ -5,6 +5,8 @@ class Library {
   constructor(libraryController) {
     this.libraryController = libraryController;
     this.init();
+    this.API_KEY =
+      process.env.API_KEY || "AIzaSyB3XGEMIcMwwlY6nhAtskPLdA35pbIFXCc";
   }
   init() {
     this.setMiddleware();
@@ -19,16 +21,14 @@ class Library {
   }
 
   setRoutes() {
-    router.get("/retriveAll", (req, res) => {
+    router.get("/retriveall", (req, res) => {
       try {
-        let url =
-          "https://www.googleapis.com/books/v1/volumes?q=cosmos&key=AIzaSyB3XGEMIcMwwlY6nhAtskPLdA35pbIFXCc";
+        let url = `https://www.googleapis.com/books/v1/volumes?q=cosmos&key=${this.API_KEY}`;
 
         let options = {
           method: "GET",
           headers: {
             Accept: "*/*",
-            "User-Agent": "Thunder Client (https://www.thunderclient.com)",
           },
         };
 
@@ -60,7 +60,7 @@ class Library {
               : req.params.query == "isbn"
               ? `isbn:${req.params.query}`
               : req.params.query
-          }&key=AIzaSyB3XGEMIcMwwlY6nhAtskPLdA35pbIFXCc`;
+          }&key=${this.API_KEY}`;
 
           let options = {
             method: "GET",

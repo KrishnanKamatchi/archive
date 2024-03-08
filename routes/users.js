@@ -44,6 +44,21 @@ class User {
         return res.status(400).json({ msg: error.details[0].message });
       }
     });
+
+    router.get("/getusers", (req, res) => {
+      try {
+        this.userController
+          .getallusers()
+          .then((data) => {
+            return res.status(200).json(data);
+          })
+          .catch((error) => {
+            return res.status(400).json(error);
+          });
+      } catch (error) {
+        return res.status(400).json(error);
+      }
+    });
   }
   route() {
     return router;
