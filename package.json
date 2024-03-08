@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "An archive for books",
   "main": "index.js",
-  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "node index",
     "serve": "nodemon index",

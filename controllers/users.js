@@ -53,26 +53,41 @@ class userController {
 
   login(name, password) {
     return new Promise((resolve, reject) => {
-      this.db.get(`SELECT * FROM users WHERE name = ?`, [name], (err, row) => {
+      this.db.get(
+        `SELECT name FROM users WHERE name = ?`,
+        [name],
+        (err, row) => {
+          if (err) {
+            reject(err);
+          }
+
+          if (row) {
+            bcrypt.compare(password, row.password, (err, result) => {
+              if (err) {
+                reject(err);
+              }
+
+              if (result) {
+                resolve({ msg: "Logged in successfully" });
+              } else {
+                reject({ msg: "Wrong password" });
+              }
+            });
+          } else {
+            reject({ msg: `user ${name} not found` });
+          }
+        }
+      );
+    });
+  }
+
+  getallusers() {
+    return new Promise((resolve, reject) => {
+      this.db.all(`SELECT name FROM users`, (err, rows) => {
         if (err) {
           reject(err);
         }
-
-        if (row) {
-          bcrypt.compare(password, row.password, (err, result) => {
-            if (err) {
-              reject(err);
-            }
-
-            if (result) {
-              resolve({ msg: "Logged in successfully" });
-            } else {
-              reject({ msg: "Wrong password" });
-            }
-          });
-        } else {
-          reject({ msg: `user ${name} not found` });
-        }
+        resolve(rows);
       });
     });
   }
