@@ -39,12 +39,15 @@ class Archive {
   setControllers() {
     // the controllers
     this.userController = require("./controllers/users")(this.dbConfig);
+    this.libraryController = require("./controllers/Library")(this.dbConfig);
   }
 
   setRoutes() {
     // the routes
     const userRoute = require("./routes/users")(this.userController);
+    const libraryRoute = require("./routes/Library")(this.libraryController);
     app.use("/users", userRoute.route());
+    app.use("/library", libraryRoute.route());
   }
 
   initiateServer() {

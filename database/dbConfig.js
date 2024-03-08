@@ -38,24 +38,17 @@ class dbConfig {
         `CREATE TABLE IF NOT EXISTS users (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT,
-          password TEXT,
-          salt TEXT
+          password TEXT
         )`
       );
 
       this.db.run(
-        `CREATE TABLE IF NOT EXISTS books (
+        `CREATE TABLE IF NOT EXISTS favorites (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          bookname TEXT,
-          volume TEXT,
-          isbn TEXT,
-          category TEXT,
-          description TEXT,
-          image TEXT,
+          title TEXT,
           author TEXT,
-          url TEXT,
-          user_id INTEGER,
-          FOREIGN KEY (user_id) REFERENCES users(id)
+          isbn TEXT,
+          user_id INTEGER REFERENCES users(id) ON DELETE CASCADE 
         )`
       );
     });

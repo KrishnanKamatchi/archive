@@ -2,9 +2,9 @@ const Joi = require("joi");
 const router = require("express").Router();
 
 class User {
-  constructor(parent) {
+  constructor(userController) {
+    this.userController = userController;
     this.init();
-    this.userController = parent;
   }
   init() {
     this.setMiddleware();
@@ -12,9 +12,8 @@ class User {
   }
 
   setMiddleware() {
-    // some middlewares
+    // we can add anys middlewares
     router.use((req, res, next) => {
-      console.log(req.body);
       next();
     });
   }
@@ -33,9 +32,16 @@ class User {
       if (!error) {
         const { name, password } = req.body;
 
-        return res.status(200).json({ name, password });
+        this.userController
+          .login(name, password)
+          .then((data) => {
+            return res.status(200).json(data);
+          })
+          .catch((error) => {
+            return res.status(400).json(error);
+          });
       } else {
-        return res.status(400).json({ error: error.details[0].message });
+        return res.status(400).json({ msg: error.details[0].message });
       }
     });
   }
@@ -44,6 +50,6 @@ class User {
   }
 }
 
-module.exports = () => {
-  return new User();
+module.exports = (userController) => {
+  return new User(userController);
 };
