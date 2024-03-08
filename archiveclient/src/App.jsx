@@ -1,11 +1,7 @@
-import Login from "./components/Login";
+import Routes from "./Routes";
 
 const App = () => {
-  return (
-    <div className="flex items-center justify-center h-screen text-3xl">
-      <Login />
-    </div>
-  );
+  return <Routes />;
 };
 
 export default App;
